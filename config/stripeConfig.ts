@@ -1,0 +1,4 @@
+export default {
+    publicKey: 'pk_live_51KQteqIEzvnnTITzvRLIg69LHifW7Ur9ftbG8rdFQaErJHuGWc7Gfm7rvd6hFRuwUaCpf1BzNd306iSLcItZFU9G00p0R7TFOQ',
+    secretKey: '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'
+}
