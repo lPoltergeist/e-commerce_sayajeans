@@ -1,24 +1,34 @@
-import React from 'react'
+import Link from 'next/link';
+import React, { useContext } from 'react'
+import { ProductContext } from '../Context/ProductsContext';
 import {Menu, Nav, ShopNav, SideNav} from './ShowDrawerStyle'
 
 export const ShopDrawerMenu = () => {
-
+    const {handleSetAll, handleSetJewelery, handleSetElectronics} = useContext(ProductContext)
 
   return (
+    
+
     <ShopNav>
         <SideNav>
-        <Menu>
+       <Link href="/">
+       <Menu onClick={() => handleSetAll()}>
             All
         </Menu>
-        <Menu>
-            Tops
-        </Menu>
-        <Menu>
-            Bottoms
-        </Menu>
-        <Menu>
+       </Link>
+       
+       <Link href="/">
+        <Menu onClick={() => handleSetJewelery()}>
             Jewelery
         </Menu>
+        </Link>
+
+        <Link href="/">
+        <Menu onClick={() => handleSetElectronics()}>
+            Electronics
+        </Menu>
+        </Link>
+
         </SideNav>
     </ShopNav>
   )

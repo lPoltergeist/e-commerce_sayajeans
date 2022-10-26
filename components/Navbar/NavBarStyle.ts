@@ -2,21 +2,26 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
 position: sticky;
+width: 100%;
+
 display: flex;
 justify-content: space-between;
 align-items: center;
-
+background: #eaeaea;
 height: 100px;
 
 `
 
 export const Menu = styled.div`
 display: flex;
+background: #eaeaea;
+z-index: 50;
 margin: 0 2rem;
-
 `
 
 export const SideMenuBars = styled.div`
+background: #eaeaea;
+z-index: 99;
 margin-left: 2rem;
 cursor: pointer;
 

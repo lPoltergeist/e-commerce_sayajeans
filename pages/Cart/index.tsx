@@ -47,12 +47,12 @@ const Cart = () => {
          
           </CartBox>
         
-          {cart.map(({image, price, title, size}: any, index: number) => (
+          {cart.map(({image, price, title, size, category}: any, index: number) => (
             <>
-          <CartProductListContainer img={image} name={title} price={price} size={size} 
+          <CartProductListContainer img={image} name={title} price={price} size={size} category={category}
           key={index} handleRemove={() =>(handleRemoveItemFromCart(index))} />
-          
           </>
+          
        ))}
        <CheckOut>
           <div className="Subtotal">
@@ -83,7 +83,7 @@ margin: 0 5rem;
 `
 
 const EmptyCart = styled.div`
-width: 100vw;
+width: 100%;
 display: flex;
 justify-content: center;
 margin: 10rem 0 15rem 0;

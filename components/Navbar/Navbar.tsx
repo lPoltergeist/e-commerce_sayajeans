@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {CartMenu, DrawerMenu, Logo, Menu, Nav, SideMenuBars, SubMenu, CartItensValue} from './NavBarStyle'
 import {CaretDown, MagnifyingGlass, User, ShoppingBagOpen, List} from 'phosphor-react';
 import {ShopDrawerMenu, OurWorldDrawerMenu} from './ShopDrawerMenu';
@@ -6,14 +6,41 @@ import SideNavBar from './SideNavBar';
 import Head from 'next/head';
 import Link from 'next/link';
 import { CartContext } from '../Context/CartContext';
+import Searchbar from './Login';
+import Login from './Login';
+import { AuthContext } from '../Context/AuthContext';
 
 const Navbar = () => {
     const [shopIsOpen, setShopIsOpen] = useState(false);
     const [ourWorldIsOpen, setOurWorldIsOpen] = useState(false);
+    const [LoginIsOpen, setLoginIsOpen] = useState(false);
 
-    const [isOpen, setIsOpen] = useState(false);
+    const {cart} = useContext(CartContext)
+    const {user, Loged} = useContext(AuthContext)
 
-  const {cart} = useContext(CartContext)
+    const [size, setSize] = useState<any>({
+      width: undefined,
+      height: undefined,
+  });
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+    window.addEventListener("resize", handleResize);
+  
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+  useEffect(() => {
+    if (size.width < 768 && {ourWorldIsOpen, shopIsOpen}) {
+      setShopIsOpen(false)
+      setOurWorldIsOpen(false)
+    }
+  }, [size.width, shopIsOpen, ourWorldIsOpen]);
 
   return (
     <Nav>
@@ -24,10 +51,7 @@ const Navbar = () => {
       </Head>
 
         <Menu>
-            <SideMenuBars>
-              
-            <List size={20} color="gray" />
-            </SideMenuBars>
+           <SideNavBar/>
             <DrawerMenu onClick={() => [setShopIsOpen(!shopIsOpen), setOurWorldIsOpen(false)]}>
                 <span >Shop <CaretDown size={16} color="gray" /></span>
                 {shopIsOpen && <ShopDrawerMenu/>}
@@ -45,11 +69,9 @@ const Navbar = () => {
         </Link>
 
         <Menu>
-        <SubMenu>
-        <MagnifyingGlass size={22} color="black" />
-        </SubMenu>
-        <SubMenu>
-        <User size={22} color="black" />
+        <SubMenu onClick={() => setLoginIsOpen(!LoginIsOpen)}>
+         <User size={22} color="black" />
+       {LoginIsOpen && <Login/>}
         </SubMenu>
         <SubMenu>
         <CartMenu>
@@ -68,4 +90,8 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+function setOpen(arg0: boolean) {
+  throw new Error('Function not implemented.');
+}
 

@@ -15,6 +15,7 @@ type ProductItems = {
   price: number
   description: string
   image: string
+  category: string;
 }
 
 
@@ -34,14 +35,14 @@ const Home: NextPage = () => {
 
       <Container>
         
-        {Products.map(({id,  image, description, price, title}: ProductItems, index) => (
+        {Products.map(({id,  image, description, price, title, category}: ProductItems, index) => (
         
         
           <Link key={index} href={`/products/${id}`}>
           <a>
         <ProductContainer  img={image} description={description} 
-         price={price} title={title} key={index}  
-         handleAddToCart={() => handleAddToCart({image, title, description, price})}/>
+         price={price} title={title} key={index}  category={category}
+         handleAddToCart={() => handleAddToCart({image, title, description, price, category})}/>
          </a>
         </Link>
 

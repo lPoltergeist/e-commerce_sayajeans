@@ -8,11 +8,12 @@ interface ProductProps {
     title: string;
     description: string;
     price: number;
+    category: string;
     handleAddToCart?: () => void;
    
   }
 
-const ProductContainer: React.FC<ProductProps> = ({img, title, description, price, handleAddToCart}: ProductProps) => {
+const ProductContainer: React.FC<ProductProps> = ({img, title, description, price, category, handleAddToCart}: ProductProps) => {
   return (
     <Container>
         <ProductInformation>
@@ -26,6 +27,7 @@ const ProductContainer: React.FC<ProductProps> = ({img, title, description, pric
 
             <Price>
                 <span>${price}</span>
+                <span> {category} </span>
             </Price>
         </ProductInformation>
       

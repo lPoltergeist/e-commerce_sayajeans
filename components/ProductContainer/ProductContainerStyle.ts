@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
+
 border-radius: 5px;
 background-color: #fff;
-box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+box-shadow: 10px 10px 25px rgba(0, 0, 0 ,0.5);
 max-width: 20rem;
 min-width: 17rem;
 margin-top: 5rem;
@@ -11,7 +12,7 @@ margin-top: 5rem;
 img{
     border-radius: 5px 5px 0 0;
     margin: 0.5rem 0 0 0.2rem;;
-  
+ 
     object-fit: contain;
     max-height: 250px;
     

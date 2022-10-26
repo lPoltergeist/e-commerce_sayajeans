@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
 border-radius: 2px;
-box-shadow: 10px 25px 25px rgba(0, 0, 0 ,0.5);
+box-shadow: 5px 15px 15px rgba(0, 0, 0 ,0.5);
 height: 150px;
 width: 150px;
 position: absolute;
@@ -13,8 +13,8 @@ background-color: #eaeaea;
 
 export const ShopNav = styled.nav`
 border-radius: 2px;
-box-shadow: 10px 25px 25px rgba(0, 0, 0 ,0.5);
-height: 200px;
+box-shadow: 10px 15px 15px rgba(0, 0, 0 ,0.5);
+height: 140px;
 width: 150px;
 position: absolute;
 background-color: #eaeaea;
