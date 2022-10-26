@@ -35,18 +35,26 @@ export const AuthContext = createContext<AuthContext>({} as AuthContext);
             signInWithPopup(auth, provider)
             .then((result) => {
               const credential = GoogleAuthProvider.credentialFromResult(result);
-              const token = credential.accessToken;
-              const user = result.user;
-              setUser(user as any)
-              sessionStorage.setItem("@AuthFirebase:token", token as string);
-              sessionStorage.setItem("@AuthFirebase:user", JSON.stringify(user));
-              
-              toast(`logged as ${user.displayName}`, {
-                style: {
-                  background: '#181818',
-                  color: '#fff'
-                }
-              })
+              if (credential === null) {
+                toast.error(`error to login, try again.`, {
+                  style: {
+                    background: '#181818',
+                    color: '#fff'
+                  }
+                })
+              } else {
+                const token = credential.accessToken
+                const user = result.user;
+                setUser(user as any)
+                sessionStorage.setItem("@AuthFirebase:token", token as string);
+                sessionStorage.setItem("@AuthFirebase:user", JSON.stringify(user));
+                toast(`logged as ${user.displayName}`, {
+                  style: {
+                    background: '#181818',
+                    color: '#fff'
+                  }
+                })
+              }
 
             }).catch((error) => {
               const errorCode = error.code;
